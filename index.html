@@ -3,196 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MY PROJECTS HUB</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+    <title>⚡ PROJECT LAB HUB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
 
     <style>
-        /* ==========================================
-           🎨 【基本デザインスタイル：シネマティックダーク】
-           ========================================== */
         :root {
-            --bg-color: #0f172a;
-            --primary-gradient: linear-gradient(135deg, #ff7a3d, #ff5100);
+            --bg-main: #060814; /* 深宇宙のような極限の黒紺 */
+            --grid-color: rgba(0, 242, 254, 0.03); /* サイバーグリッドの線の色 */
             --text-main: #ffffff;
-            --text-sub: rgba(255, 255, 255, 0.6);
-            --card-bg: rgba(15, 23, 42, 0.45);
-            --card-border: rgba(255, 255, 255, 0.08);
+            --text-muted: #64748b;
+            
+            /* 各プロジェクトのテーマカラー（ネオン） */
+            --color-pomo: #ff5e00;      /* パルスオレンジ */
+            --color-proj2: #00f2fe;     /* サイバーシアン */
+            --color-proj3: #9d4edd;     /* ネオンパープル */
+            --color-proj4: #00f5d4;     /* ネオングリーン */
         }
 
         body {
-            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
-            background-color: var(--bg-color);
+            font-family: 'Space Grotesk', 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            /* 背景にうっすらと浮かび上がるサイバー空間の格子（グリッド）線 */
+            background-image: 
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: center;
             color: var(--text-main);
             min-height: 100vh;
             margin: 0;
-            padding: 60px 20px;
+            padding: 80px 20px;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow-x: hidden;
-            transition: all 0.5s ease;
         }
 
-        /* 背景の装飾光オーブ */
-        .bg-glow-1 {
-            position: fixed;
-            top: -20%; left: -10%; width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(255, 122, 61, 0.12) 0%, rgba(0,0,0,0) 70%);
-            z-index: -1;
-        }
-        .bg-glow-2 {
-            position: fixed;
-            bottom: -20%; right: -10%; width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(45, 212, 191, 0.08) 0%, rgba(0,0,0,0) 70%);
-            z-index: -1;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 950px;
+        /* 画面中央上部のヘッダー */
+        .hub-header {
             text-align: center;
-            z-index: 10;
+            margin-bottom: 70px;
+            position: relative;
+        }
+        /* 近未来的な研究開発ラボをイメージしたバッジ */
+        .status-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            padding: 6px 16px;
+            background: rgba(0, 242, 254, 0.05);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            color: #00f2fe;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.1);
+        }
+        .hub-header h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+        }
+        .hub-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin: 0;
+            letter-spacing: 1px;
+            font-family: 'Inter', sans-serif;
         }
 
-        header { margin-bottom: 55px; }
-        header h1 {
-            font-size: 3rem; font-weight: 700; letter-spacing: 3px; margin: 0 0 12px 0;
-            background: linear-gradient(to right, #ffffff, rgba(255,255,255,0.6));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        header p { color: var(--text-sub); font-size: 1.1rem; font-weight: 300; letter-spacing: 1.5px; margin: 0; }
-
-        /* グリッドレイアウト */
-        .grid {
+        /* グリッドレイアウトコンテナ */
+        .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            width: 100%;
+            max-width: 1100px;
+            margin-bottom: 80px;
         }
 
-        /* カードデザイン基盤 */
-        .card {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--card-border);
-            border-radius: 28px;
+        /* サイバーミニマリズムカード基盤 */
+        .lab-card {
+            background: rgba(10, 15, 30, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
             padding: 40px 30px;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: space-between;
-            min-height: 240px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
-        .card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.05);
-            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5);
+        /* カードの背景に静かに佇む装飾的な薄いIDテキスト */
+        .lab-card::before {
+            content: "SYS-LOG //";
+            position: absolute;
+            top: 25px; right: 30px;
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.03);
+            letter-spacing: 2px;
+            font-weight: 700;
         }
 
-        /* 各カード固有のホバー時ネオン発光エフェクト */
-        .card.pomo:hover { border-color: #ff7a3d; box-shadow: 0 0 30px rgba(255, 122, 61, 0.3); }
-        .card.project-2:hover { border-color: #2dd4bf; box-shadow: 0 0 30px rgba(45, 212, 191, 0.3); }
-        .card.project-3:hover { border-color: #3b82f6; box-shadow: 0 0 30px rgba(59, 130, 246, 0.3); }
-        .card.project-4:hover { border-color: #a855f7; box-shadow: 0 0 30px rgba(168, 85, 247, 0.3); }
+        /* ホバー時の極細の光の境界線とシャドウ */
+        .lab-card:hover {
+            transform: translateY(-5px);
+            background: rgba(13, 20, 41, 0.9);
+        }
 
-        .card-top { width: 100%; text-align: center; }
-        .card-icon { font-size: 3.5rem; margin-bottom: 18px; transition: transform 0.3s ease; }
-        .card:hover .card-icon { transform: scale(1.15) rotate(5deg); }
-        .card-title { font-size: 1.35rem; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 10px; }
-        .card-desc { font-size: 0.88rem; color: var(--text-sub); line-height: 1.6; margin: 0 0 25px 0; }
+        /* 💡 各カード固有のネオンカラー割り当て */
+        .lab-card.pomo-core:hover { border-color: var(--color-pomo); box-shadow: 0 10px 30px rgba(255, 94, 0, 0.15); }
+        .lab-card.spare-01:hover { border-color: var(--color-proj2); box-shadow: 0 10px 30px rgba(0, 242, 254, 0.15); }
+        .lab-card.spare-02:hover { border-color: var(--color-proj3); box-shadow: 0 10px 30px rgba(157, 78, 221, 0.15); }
+        .lab-card.spare-03:hover { border-color: var(--color-proj4); box-shadow: 0 10px 30px rgba(0, 245, 212, 0.15); }
 
-        /* 👆 【新機能】サイトにジャンプする輝く未来的なボタン */
-        .launch-btn {
-            display: inline-flex;
+        /* カードの内部テキスト要素 */
+        .meta-area { width: 100%; }
+        .card-num {
+            font-size: 0.8rem; font-weight: 700; color: var(--text-muted); 
+            margin-bottom: 15px; font-family: monospace; letter-spacing: 1px;
+        }
+        /* ホバー時に数字の色がそれぞれのネオンカラーに同期 */
+        .lab-card.pomo-core:hover .card-num { color: var(--color-pomo); }
+        .lab-card.spare-01:hover .card-num { color: var(--color-proj2); }
+        .lab-card.spare-02:hover .card-num { color: var(--color-proj3); }
+        .lab-card.spare-03:hover .card-num { color: var(--color-proj4); }
+
+        .card-title { font-size: 1.5rem; font-weight: 700; margin: 0 0 12px 0; letter-spacing: -0.5px; }
+        .card-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin: 0 0 35px 0; font-family: 'Inter', sans-serif; }
+
+        /* ↗ 未来的なジャンプアクションボタン */
+        .action-link {
+            display: flex;
             align-items: center;
             justify-content: center;
-            width: 85%;
-            padding: 12px 0;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: #ffffff;
+            width: 100%;
+            padding: 14px 0;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            border-radius: 14px;
-            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            border-radius: 8px;
+            box-sizing: border-box;
             transition: all 0.3s ease;
         }
-        
-        /* 各ボタン個別のホバー色変化 */
-        .card.pomo .launch-btn:hover { background: #ff7a3d; border-color: transparent; box-shadow: 0 5px 15px rgba(255, 122, 61, 0.4); text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
-        .card.project-2 .launch-btn:hover { background: #2dd4bf; border-color: transparent; box-shadow: 0 5px 15px rgba(45, 212, 191, 0.4); color: #0f172a; }
-        .card.project-3 .launch-btn:hover { background: #3b82f6; border-color: transparent; box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4); }
-        .card.project-4 .launch-btn:hover { background: #a855f7; border-color: transparent; box-shadow: 0 5px 15px rgba(168, 85, 247, 0.4); }
 
-        footer { color: rgba(255, 255, 255, 0.25); font-size: 0.8rem; letter-spacing: 1px; }
+        /* ホバー時に内側から鮮やかに発光するエフェクト */
+        .lab-card.pomo-core .action-link:hover { background: var(--color-pomo); border-color: transparent; box-shadow: 0 0 20px var(--color-pomo); color: #000; }
+        .lab-card.spare-01 .action-link:hover { background: var(--color-proj2); border-color: transparent; box-shadow: 0 0 20px var(--color-proj2); color: #000; }
+        .lab-card.spare-02 .action-link:hover { background: var(--color-proj3); border-color: transparent; box-shadow: 0 0 20px var(--color-proj3); color: #fff; }
+        .lab-card.spare-03 .action-link:hover { background: var(--color-proj4); border-color: transparent; box-shadow: 0 0 20px var(--color-proj4); color: #000; }
+
+        .hub-footer {
+            color: rgba(255, 255, 255, 0.15); font-size: 0.75rem; letter-spacing: 2px; font-weight: 300;
+        }
     </style>
 </head>
 <body>
 
-<div class="bg-glow-1"></div>
-<div class="bg-glow-2"></div>
-
 <div class="container">
-    <header>
-        <h1>MY PORTFOLIO HUB</h1>
-        <p>制作したWebサイト・ツール集</p>
-    </header>
+    
+    <div class="hub-header">
+        <span class="status-badge">System Active</span>
+        <h1>Project Lab Hub</h1>
+        <p>中心統合型アプリケーション・ポートフォリオ</p>
+    </div>
 
-    <div class="grid">
+    <div class="project-grid">
 
-        <div class="card pomo">
-            <div class="card-top">
-                <div class="card-icon">⏱️</div>
-                <div class="card-title">Pomodoro Timer</div>
-                <p class="card-desc">https://arqle.github.io/pomodorotimer/</p>
+        <div class="lab-card pomo-core">
+            <div class="meta-area">
+                <div class="card-num">DATA_NODE // 01</div>
+                <h2 class="card-title">Pomodoro Timer</h2>
+                <p class="card-desc">時間管理と詳細な作業分析ログを集約した、集中力をブーストするためのスマートクロック。</p>
             </div>
             
-            <a href="index.html" class="launch-btn">サイトを開く ↗</a>
-            </div>
+            <a href="https://arqle.github.io/pomodorotimer/" class="action-link">LAUNCH PROJECT ↗</a>
+        </div>
 
-        <div class="card project-2">
-            <div class="card-top">
-                <div class="card-icon">🚀</div>
-                <div class="card-title">Next Project 01</div>
-                <p class="card-desc">新しく制作したツールのURLをここに登録できます。アイコンや説明も自由に変更可能です。</p>
+
+        <div class="lab-card spare-01">
+            <div class="meta-area">
+                <div class="card-num">DATA_NODE // 02</div>
+                <h2 class="card-title">Next Project Alpha</h2>
+                <p class="card-desc">次に制作するWebサイトやツールの概要をここに記載します。タイトルや説明文は自由に編集可能です。</p>
             </div>
             
-            <a href="#" class="launch-btn">サイトを開く ↗</a>
-            </div>
+            <a href="#" class="action-link">LAUNCH PROJECT ↗</a>
+        </div>
 
-        <div class="card project-3">
-            <div class="card-top">
-                <div class="card-icon">✨</div>
-                <div class="card-title">Next Project 02</div>
-                <p class="card-desc">新しく制作したツールのURLをここに登録できます。アイコンや説明も自由に変更可能です。</p>
+
+        <div class="lab-card spare-02">
+            <div class="meta-area">
+                <div class="card-num">DATA_NODE // 03</div>
+                <h2 class="card-title">Next Project Beta</h2>
+                <p class="card-desc">新しく拡張されるデータノード。UIパーツやアイコン、テキスト情報を追加してすぐにデプロイできます。</p>
             </div>
             
-            <a href="#" class="launch-btn">サイトを開く ↗</a>
-            </div>
+            <a href="#" class="action-link">LAUNCH PROJECT ↗</a>
+        </div>
 
-        <div class="card project-4">
-            <div class="card-top">
-                <div class="card-icon">🛠️</div>
-                <div class="card-title">Next Project 03</div>
-                <p class="card-desc">新しく制作したツールのURLをここに登録できます。アイコンや説明も自由に変更可能です。</p>
+
+        <div class="lab-card spare-03">
+            <div class="meta-area">
+                <div class="card-num">DATA_NODE // 04</div>
+                <h2 class="card-title">Next Project Gamma</h2>
+                <p class="card-desc">ハブシステムの拡張エリア。4つ目以降のツールやリンクをここに即座にバインドすることができます。</p>
             </div>
             
-            <a href="#" class="launch-btn">サイトを開く ↗</a>
-            </div>
+            <a href="#" class="action-link">LAUNCH PROJECT ↗</a>
+        </div>
 
     </div>
 
-    <footer>
-        &copy; 2026 My Web Projects Hub. All Rights Reserved.
-    </footer>
+    <div class="hub-footer">
+        // CONTROL CONSOLE SYSTEM v2.0 &copy; 2026
+    </div>
 </div>
 
 </body>
